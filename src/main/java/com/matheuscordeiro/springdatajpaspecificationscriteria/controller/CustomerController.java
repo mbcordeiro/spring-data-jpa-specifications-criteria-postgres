@@ -25,4 +25,14 @@ public class CustomerController {
     public ResponseEntity<CustomerDto> getByCustomer(@PathVariable final Long id) {
         return ResponseEntity.ok(customerService.findById(id));
     }
+
+    @GetMapping("/birthday")
+    public boolean hasBirthday() {
+        return customerService.customerHasBirthday();
+    }
+
+    @GetMapping("/longterm")
+    public boolean longTerm() {
+        return customerService.isLongTermCustomer();
+    }
 }

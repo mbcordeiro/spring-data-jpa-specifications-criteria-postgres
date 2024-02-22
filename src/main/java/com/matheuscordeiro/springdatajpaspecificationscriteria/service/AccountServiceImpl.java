@@ -34,7 +34,7 @@ public class AccountServiceImpl implements AccountService {
         query.setParameter(1, customer);
         return query.getResultList().stream().map(account ->
                 new AccountDto(account.getCustomer().getId(), new CustomerDto(account.getCustomer().getFirstname(),
-                        account.getCustomer().getLastname()))
+                        account.getCustomer().getLastname(), customer.getBirthday()))
         ).collect(Collectors.toList());
     }
 }
