@@ -4,10 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import org.springframework.data.annotation.CreatedBy;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 public class Customer {
@@ -17,7 +15,7 @@ public class Customer {
     private String firstname;
     private String lastname;
     private LocalDate birthday;
-    @CreatedBy
+
     private LocalDate createdAt;
 
     public Customer() {
@@ -32,6 +30,7 @@ public class Customer {
         this.firstname = firstname;
         this.lastname = lastname;
         this.birthday = birthday;
+        this.createdAt = LocalDate.now();
     }
 
     public Long getId() {
