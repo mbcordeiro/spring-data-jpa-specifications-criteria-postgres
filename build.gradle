@@ -20,7 +20,22 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'org.postgresql:postgresql'
+	compileOnly 'org.hibernate:hibernate-jpamodelgen:6.4.4.Final'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	annotationProcessor('org.hibernate:hibernate-jpamodelgen:6.4.4.Final')
+}
+
+tasks.withType(JavaCompile) {
+	options.annotationProcessorGeneratedSourcesDirectory = file("src/generated/java")
+}
+
+
+sourceSets {
+	generated {
+		java {
+			srcDirs = ['src/generated/java']
+		}
+	}
 }
 
 tasks.named('test') {
